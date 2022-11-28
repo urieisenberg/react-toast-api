@@ -22,3 +22,10 @@ export interface IToast {
     borderColor?: string;
 }
 
+export interface StyleProps {
+    type?: string | "";
+    color?: string | "white";
+    background?: string | "black";
+    border?: string | "none";
+    borderColor?: string | "black";
+}
