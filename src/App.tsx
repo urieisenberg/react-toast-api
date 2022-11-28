@@ -1,10 +1,11 @@
-import React from 'react';
-
+import ToastProvider from "./api/context";
+import { Usage } from "./usage";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <ToastProvider>
+      <Usage />
+    </ToastProvider>
   );
 }
 

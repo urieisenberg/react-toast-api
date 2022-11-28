@@ -1,23 +1,30 @@
 import { useEffect } from "react";
-import { Wrapper, Container } from "./styles";
-import { ToastWrapperStyledProps } from "../../types";
+import { useToast } from "../../hooks/useToast";
+import { Wrapper } from "./styles";
+import { ToastStyledProps } from "../../types";
 
-interface ToastProps extends ToastWrapperStyledProps {
+interface ToastProps extends ToastStyledProps {
   children: React.ReactNode;
   duration?: number;
   id: number;
 }
 
-export const Toast = ({ children, duration, id, ...props }: ToastProps) => {
+export const Toast = ({
+  children,
+  duration = 3000,
+  id,
+  ...props
+}: ToastProps) => {
+  const { removeToast } = useToast();
+
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      console.log("timeout");
+    const timer = setTimeout(() => {
+      removeToast(id);
     }, duration);
-    return () => clearTimeout(timeout);
-  }, [duration]);
-  return (
-    <Wrapper position={props.position}>
-      <Container {...props}>{children}</Container>
-    </Wrapper>
-  );
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [duration, id, removeToast]);
+
+  return <Wrapper {...props}>{children}</Wrapper>;
 };
