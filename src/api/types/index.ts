@@ -22,10 +22,14 @@ export interface IToast {
     borderColor?: string;
 }
 
-export interface StyleProps {
+export interface ToastContainerStyledProps {
     type?: string | "";
     color?: string | "white";
     background?: string | "black";
     border?: string | "none";
     borderColor?: string | "black";
+}
+
+export interface ToastWrapperStyledProps extends ToastContainerStyledProps {
+    position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
 }

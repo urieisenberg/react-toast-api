@@ -1,8 +1,42 @@
 import styled from "styled-components";
 import { handleTypeColors } from "./handleColors";
-import { StyleProps } from "../../types";
+import { ToastContainerStyledProps, ToastWrapperStyledProps } from "../../types";
 
-export const Wrapper = styled.div<StyleProps>`
+
+export const Wrapper = styled.div<ToastWrapperStyledProps>`
+    positon: absolute;
+    ${(props) => {
+        switch (props.position) {
+            case "top-left":
+                return `
+                    top: 0;
+                    left: 0;
+                `;
+            case "top-right":
+                return `
+                    top: 0;
+                    right: 0;
+                `;
+            case "bottom-left":
+                return `
+                    bottom: 0;
+                    left: 0;
+                `;
+            case "bottom-right":
+                return `
+                    bottom: 0;
+                    right: 0;
+                `;
+            default:
+                return `
+                    top: 0;
+                    right: 0;
+                `;
+        }
+    }}
+`;
+
+export const Container = styled.div<ToastContainerStyledProps>`
   position: relative;
   color: ${(props) => props.color};
   background: ${(props) =>
