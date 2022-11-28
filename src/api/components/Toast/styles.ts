@@ -18,3 +18,17 @@ export const Wrapper = styled.div<ToastStyledProps>`
   margin: 10px;
   width: 250px;
 `;
+
+export const CloseButton = styled.button`
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    `;
+

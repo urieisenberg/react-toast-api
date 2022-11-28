@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useToast } from "../../hooks/useToast";
-import { Wrapper } from "./styles";
+import { Wrapper, CloseButton } from "./styles";
 import { ToastStyledProps } from "../../types";
 
 interface ToastProps extends ToastStyledProps {
   children: React.ReactNode;
-  duration?: number;
   id: number;
+  duration?: number;
 }
 
 export const Toast = ({
@@ -26,5 +26,10 @@ export const Toast = ({
     };
   }, [duration, id, removeToast]);
 
-  return <Wrapper {...props}>{children}</Wrapper>;
+  return (
+    <Wrapper {...props}>
+      <CloseButton onClick={() => removeToast(id)}>x</CloseButton>
+      {children}
+    </Wrapper>
+  );
 };
