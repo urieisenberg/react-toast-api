@@ -1,5 +1,5 @@
 import ToastProvider from "./api/context";
-import { Usage } from "./usage";
+import { Usage } from "./ usage";
 
 function App() {
   return (
